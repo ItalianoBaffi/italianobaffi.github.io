@@ -1,12 +1,12 @@
 ---
 import { Container } from '@components/odyssey-theme';
 import Layout from './Page.astro'; 
-import { generateTagData } from '../utils/helpers';v
+import { generateTagData } from '../utils/helpers';
 import { useState } from 'react';
 
 const {content: {title, description, publishDate, canonicalURL, featuredImage, tags} } = Astro.props;
 
-const [allTagsData, setallTagsData] = useState<any[]>([]);
+let [allTagsData, setallTagsData] = useState<any[]>([]);
 
 
 if(tags && tags.length > 0){
