@@ -106,7 +106,7 @@ export class ThemeSwitcher extends LitElement {
   }
 
 	private _setTheme(theme) {
-		this._doc.setAttribute('data-theme', theme);
+		this._doc?.setAttribute('data-theme', theme);
 
     const _heroImage = document.querySelector('#home-hero-image') as HTMLImageElement;
 		if (theme === 'default') {
