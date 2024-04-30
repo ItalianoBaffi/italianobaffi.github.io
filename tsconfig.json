@@ -2,6 +2,7 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
+    "noImplicitAny": false,
     "baseUrl": "src",
     "types": [
       "astro/client"
