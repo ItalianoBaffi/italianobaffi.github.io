@@ -2,6 +2,8 @@ name: Refresh EIA Data
 on:
   schedule:
     - cron: 0 0 * * 0-6
+  workflow_dispatch:
+  
 jobs:
   refresh-feed:
     runs-on: ubuntu-latest
