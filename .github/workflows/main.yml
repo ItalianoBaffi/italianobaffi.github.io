@@ -3,10 +3,6 @@ on:
   schedule:
     - cron: 0 0 * * 0-6
   workflow_dispatch:
-
-permissions:
-  contents: write
-  pages: write
   
 jobs:
   refresh-feed:
@@ -16,3 +12,21 @@ jobs:
         uses: JamesIves/fetch-api-data-action@v2.4.0
         with:
           endpoint: https://api.eia.gov/v2/electricity/state-electricity-profiles/emissions-by-state-by-fuel/data/?api_key=${{ secrets.EIA_API_KEY }}&facets[fuelid][]=ALL&data[]=co2-rate-lbs-mwh
+
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Fetch API Data 📦
+        uses: JamesIves/fetch-api-data-action@releases/v1
+        with:
+          ENDPOINT: https://www.loc.gov/maps/?fa=location:cyprus&fo=json&at=results
+          retry: true
+      - name: Build and Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: master # Pushes the updates to the master branch.
+          FOLDER: fetch-api-data-action # The location of the data.json file saved by the Fetch API Data action.
+          TARGET_FOLDER: data # Saves the data into the 'data' directory on the master branch.
