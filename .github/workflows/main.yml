@@ -20,7 +20,7 @@ jobs:
           save-location: fetch-api-data-action
 
       - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v4.6.0
+        uses: JamesIves/github-pages-deploy-action@v4.6.0
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: main # Pushes the updates to the master branch.
