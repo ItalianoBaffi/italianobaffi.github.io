@@ -12,4 +12,4 @@ jobs:
         uses: JamesIves/fetch-api-data-action@v2.3.0
         with:
           endpoint: https://api.eia.gov/v2/electricity/state-electricity-profiles/emissions-by-state-by-fuel/data/?api_key=${{ secrets.EIA_API_KEY }}&facets[fuelid][]=ALL&data[]=co2-rate-lbs-mwh
-          save-name: eia-data
+          save-name: eiaData
