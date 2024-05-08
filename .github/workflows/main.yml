@@ -22,7 +22,7 @@ jobs:
           endpoint: https://api.eia.gov/v2/electricity/state-electricity-profiles/emissions-by-state-by-fuel/data/?api_key=${{secrets.EIA_API_KEY}}&facets[fuelid][]=ALL&data[]=co2-rate-lbs-mwh
 
       - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.6.0
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: main # Pushes the updates to the main branch.
           folder: fetch-api-data-action # The location of the data.json file saved by the Fetch API Data action.
