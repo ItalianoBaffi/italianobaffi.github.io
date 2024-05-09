@@ -26,7 +26,7 @@ jobs:
           target-folder: data # Saves the data into the 'data' directory on the main branch.
 
       - run:   |
-               curl -u USER:TOKEN "https://api.eia.gov/v2/electricity/state-electricity-profiles/emissions-by-state-by-fuel/data/?api_key=${{ secrets.EIA_API_KEY }}&facets[fuelid][]=ALL&data[]=co2-rate-lbs-mwh" > $MAIN/data.json
-               echo "GIT_EMAIL=$(jq -r '.commit.author.email' $MAIN/data.json)" >> $GITHUB_ENV
+               curl -u USER:TOKEN "https://api.eia.gov/v2/electricity/state-electricity-profiles/emissions-by-state-by-fuel/data/?api_key=${{ secrets.EIA_API_KEY }}&facets[fuelid][]=ALL&data[]=co2-rate-lbs-mwh" > $HOME/data.json
+               echo "GIT_EMAIL=$(jq -r '.commit.author.email' $HOME/data.json)" >> $GITHUB_ENV
         shell: bash
         
