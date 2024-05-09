@@ -15,10 +15,6 @@ jobs:
         id: saveJSONDetails
         uses: engahmeds3ed/create-json-url@v0.0.1
         with:
-          name: "data.json"
+          name: "new.json"
           url: "https://api.eia.gov/v2/electricity/state-electricity-profiles/emissions-by-state-by-fuel/data/?api_key=${{ secrets.EIA_API_KEY }}&facets[fuelid][]=ALL&data[]=co2-rate-lbs-mwh"
-          dir: '.'
-        
-      - name: Display file path
-        run: echo "Saved JSON file path: ${{ steps.saveJSONDetails.outputs.file_path }}"
-        
+          dir: '/data/'
