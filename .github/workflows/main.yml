@@ -8,15 +8,19 @@ jobs:
   refresh-feed:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          
       - name: Fetch API Data
         uses: JamesIves/fetch-api-data-action@v2.4.0
         with:
           endpoint: https://api.eia.gov/v2/electricity/state-electricity-profiles/emissions-by-state-by-fuel/data/?api_key=${{ secrets.EIA_API_KEY }}&facets[fuelid][]=ALL&data[]=co2-rate-lbs-mwh
-          save-location: .
 
       - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4.6.0
         with:
           branch: main # Pushes the updates to the master branch.
-          folder: . # The location of the data.json file saved by the Fetch API Data action.
-          target-folder: . # Saves the data into the 'data' directory on the main branch.
+          folder: fetch-api-data-action # The location of the data.json file saved by the Fetch API Data action.
+          target-folder: data # Saves the data into the 'data' directory on the main branch.
