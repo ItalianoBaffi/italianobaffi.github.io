@@ -11,7 +11,6 @@ jobs:
       - name: Fetch EIA Data and Save
         run:  |
                ls
-               curl -u USER:TOKEN -g 'https://api.eia.gov/v2/electricity/state-electricity-profiles/emissions-by-state-by-fuel/data/?api_key=${{ secrets.EIA_API_KEY }}&facets[fuelid][]=ALL&data[]=co2-rate-lbs-mwh'\
-               -o data.json
+               curl -u USER:TOKEN -g 'https://api.eia.gov/v2/electricity/state-electricity-profiles/emissions-by-state-by-fuel/data/?api_key=${{ secrets.EIA_API_KEY }}&facets[fuelid][]=ALL&data[]=co2-rate-lbs-mwh' -o data.json
                ls
         shell: bash
