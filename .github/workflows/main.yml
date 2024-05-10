@@ -12,11 +12,6 @@ jobs:
         run:  |
                ls
                curl -u USER:TOKEN -g 'https://api.eia.gov/v2/electricity/state-electricity-profiles/emissions-by-state-by-fuel/data/?api_key=${{ secrets.EIA_API_KEY }}&facets[fuelid][]=ALL&data[]=co2-rate-lbs-mwh' > data.json
+               echo "GIT_EMAIL=$(jq -r '.commit.author.email' data.json)" > $GITHUB_ENV
                ls
         shell: bash
-
-      - name: Upload output file
-        uses: actions/upload-artifact@v4
-        with:
-          name: data
-          path: data.json
