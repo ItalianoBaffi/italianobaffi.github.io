@@ -13,13 +13,13 @@ jobs:
       
       - name: Fetch EIA Data and Save
         run:  |
-              ls
+              echo "📡 Fetching Data... 📡"
               curl -u USER:TOKEN -g 'https://api.eia.gov/v2/electricity/state-electricity-profiles/emissions-by-state-by-fuel/data/?api_key=${{ secrets.EIA_API_KEY }}&facets[fuelid][]=ALL&data[]=co2-rate-lbs-mwh' > data.json
-              ls
+              echo "💾 Data Fetched 💾"
               git config --global user.name 'GitHub Actions'
               git config --global user.email 'actions@github.com'
               git add data.json
-              git commit -am "Automated Update"
+              git commit -am "Daily EIA Update"
               git push
-              ls
+              echo "🎉 Updates Pushed Successfully! 🎉"
         shell: bash
