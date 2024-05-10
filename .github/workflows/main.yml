@@ -19,7 +19,7 @@ jobs:
               git config --global user.name 'GitHub Actions'
               git config --global user.email 'actions@github.com'
               git add data.json
-              git commit -am "Daily EIA Update" --force
+              git commit -am "Daily EIA Update" --allow-empty
               git push
               echo "🎉 Updates Pushed Successfully! 🎉"
         shell: bash
